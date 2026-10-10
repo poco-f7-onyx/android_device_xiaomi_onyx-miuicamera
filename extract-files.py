@@ -18,6 +18,8 @@ from extract_utils.main import (
 
 namespace_imports = [
     'device/xiaomi/onyx-miuicamera',
+    # modules built by the main device tree land in vendor/xiaomi/onyx
+    'vendor/xiaomi/onyx',
 ]
 
 blob_fixups: blob_fixups_user_type = {

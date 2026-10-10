@@ -29,3 +29,22 @@ PRODUCT_SOONG_NAMESPACES += \
 # Sysconfig
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/miuicamera-hiddenapi-package-allowlist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/miuicamera-hiddenapi-package-allowlist.xml
+
+# 9 camera assets absent from the onyx stock dump (taken from klee stock)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilts/odm/etc/camera/videofilter/169_LeicaChrome.png:$(TARGET_COPY_OUT_ODM)/etc/camera/videofilter/169_LeicaChrome.png \
+    $(LOCAL_PATH)/prebuilts/odm/etc/camera/videofilter/170_LeicaClassic.png:$(TARGET_COPY_OUT_ODM)/etc/camera/videofilter/170_LeicaClassic.png \
+    $(LOCAL_PATH)/prebuilts/odm/etc/camera/videofilter/171_LeicaContemporary.png:$(TARGET_COPY_OUT_ODM)/etc/camera/videofilter/171_LeicaContemporary.png \
+    $(LOCAL_PATH)/prebuilts/odm/etc/camera/videofilter/172_LeicaEternal.png:$(TARGET_COPY_OUT_ODM)/etc/camera/videofilter/172_LeicaEternal.png \
+    $(LOCAL_PATH)/prebuilts/odm/etc/camera/videofilter/173_LeicaBrass.png:$(TARGET_COPY_OUT_ODM)/etc/camera/videofilter/173_LeicaBrass.png \
+    $(LOCAL_PATH)/prebuilts/odm/etc/camera/videofilter/174_LeicaTeal.png:$(TARGET_COPY_OUT_ODM)/etc/camera/videofilter/174_LeicaTeal.png \
+    $(LOCAL_PATH)/prebuilts/odm/etc/camera/videofilter/175_LeicaIModelA.png:$(TARGET_COPY_OUT_ODM)/etc/camera/videofilter/175_LeicaIModelA.png \
+    $(LOCAL_PATH)/prebuilts/odm/etc/camera/72.png:$(TARGET_COPY_OUT_ODM)/etc/camera/72.png \
+    $(LOCAL_PATH)/prebuilts/odm/etc/camera/73.png:$(TARGET_COPY_OUT_ODM)/etc/camera/73.png
+# Default permissions
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/miuicamera-permissions.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/default-permissions/miuicamera-permissions.xml
+
+# Init scripts
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init/init.miuicamera.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.miuicamera.rc
