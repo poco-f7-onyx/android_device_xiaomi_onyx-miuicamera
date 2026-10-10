@@ -11,3 +11,15 @@ allow hal_camera_default hal_misys_vendor_service:service_manager add;
 allow hal_camera_default vendor_camera_data_file:dir { create_dir_perms r_dir_perms };
 allow hal_camera_default vendor_camera_data_file:file { create_file_perms rw_file_perms };
 allow hal_camera_default appdomain_tmpfs:file rw_file_perms;
+
+# HEIC capture: the HEIF muxer (libheichal) writes the container into a memfd.
+# A memfd created by a non-app domain gets the plain tmpfs label instead of
+# appdomain_tmpfs, so MPEG4Writer fails with EACCES and the camera leaves a
+# 21 MB all-zero .HEIC behind ("Failed to start muxer").
+allow hal_camera_default tmpfs:file rw_file_perms;
+
+# HEIF brand/model metadata read by the muxer
+get_prop(hal_camera_default, media_config_prop);
+
+# GPU clock info queried by the algo framework
+allow hal_camera_default vendor_sysfs_kgsl:file r_file_perms;
